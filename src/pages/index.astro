@@ -25,6 +25,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 				Roblox o cualquier otra tecnología.
 			</p>
 			<p>Investiga las páginas y mantente al día con mis novedades.</p>
+			<p>
+				¿Te gusta mi contenido? Suscríbete a mi canal de YouTube para no
+				perderte ningún video.
+			</p>
+			<div class="youtube-subscribe">
+				<script src="https://apis.google.com/js/platform.js"></script>
+				<div class="g-ytsubscribe" data-channelid="UCpzkEfV29TDob2zRxl845vA" data-layout="full" data-count="default"></div>
+			</div>
 		</main>
 		<Footer />
 	</body>
@@ -32,5 +40,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 <style>
 	h1 {
 		text-align: center;
+	}
+
+	.youtube-subscribe {
+		display: flex;
+		justify-content: center;
 	}
 </style>
