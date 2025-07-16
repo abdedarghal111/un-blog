@@ -5,7 +5,12 @@ import { SITE_TITLE } from '../consts';
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+                <h2>
+                        <a href="/">
+                                <img src="/logo.png" alt="Logo" class="logo" />
+                                {SITE_TITLE}
+                        </a>
+                </h2>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
@@ -54,10 +59,17 @@ import { SITE_TITLE } from '../consts';
 		font-size: 1em;
 	}
 
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
+        h2 a,
+        h2 a.active {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+        }
+        .logo {
+                width: 32px;
+                height: 32px;
+                margin-right: 0.5em;
+        }
 	nav {
 		display: flex;
 		align-items: center;
