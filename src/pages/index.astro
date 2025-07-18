@@ -14,36 +14,49 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 		<Header />
 		<main>
 			<h1>👋 Bienvenido</h1>
-			<p>
-				Hola, soy Abderra. Mi canal se centra en Roblox; subo contenido
-				de Roblox y, a veces, de programación o Roblox Studio. También
-				comparto algunos gameplays.
-			</p>
-			<p>
-				Esta página es para que tengas a mano los recursos, anuncios y
-				la documentación de cada tema que veamos, ya sea sobre Lua,
-				Roblox o cualquier otra tecnología.
-			</p>
-			<p>Investiga las páginas y mantente al día con mis novedades.</p>
+                        <p>
+                                Hola, soy Abderra. Mi canal está dedicado a Roblox y de vez en
+                                cuando hablo sobre programación o Roblox Studio. También
+                                comparto algunos videos de entretenimiento.
+                        </p>
+                        <p>
+                                Esta página es para que tengas a mano los recursos, los anuncios
+                                y la documentación de cada tema que veamos, ya sea sobre Lua,
+                                Roblox o cualquier otra tecnología.
+                        </p>
+                        <p>Explora las páginas y mantente al tanto de mis novedades.</p>
 			<p>
 				¿Te gusta mi contenido? Suscríbete a mi canal de YouTube para no
 				perderte ningún video.
 			</p>
-			<div class="youtube-subscribe">
-				<script src="https://apis.google.com/js/platform.js"></script>
-				<div class="g-ytsubscribe" data-channelid="UCpzkEfV29TDob2zRxl845vA" data-layout="full" data-count="default"></div>
-			</div>
-		</main>
-		<Footer />
-	</body>
+                        <div class="youtube-subscribe">
+                                <script src="https://apis.google.com/js/platform.js"></script>
+                                <div class="g-ytsubscribe" data-channelid="UCpzkEfV29TDob2zRxl845vA" data-layout="full" data-count="default"></div>
+                        </div>
+                        <p>
+                                También puedes unirte a mi servidor de Discord para charlar con
+                                la comunidad y conmigo.
+                        </p>
+                        <div class="discord-widget">
+                                <iframe src="https://discord.com/widget?id=780463086645542912&theme=dark" width="300" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                        </div>
+                </main>
+                <Footer />
+        </body>
 </html>
 <style>
-	h1 {
+	/* h1 {
 		text-align: center;
-	}
+	} */
 
-	.youtube-subscribe {
-		display: flex;
-		justify-content: center;
-	}
+        .youtube-subscribe {
+                display: flex;
+                justify-content: center;
+        }
+
+        .discord-widget {
+                display: flex;
+                justify-content: center;
+                margin-top: 1em;
+        }
 </style>
