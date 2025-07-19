@@ -8,8 +8,24 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import { Image } from 'astro:assets';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+// Agrupar las entradas por carpeta para formar "series" o colecciones
+const groups = new Map<string, typeof posts>();
+for (const post of posts) {
+        const parts = post.id.split('/');
+        const key = parts.length > 1 ? parts[0] : 'general';
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key)?.push(post);
+}
+
+const prettyName = (name: string) =>
+        name === 'general'
+                ? 'General'
+                : name
+                                .replace(/-/g, ' ')
+                                .replace(/\b\w/g, (l) => l.toUpperCase());
 ---
 
 <!doctype html>
@@ -89,25 +105,33 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
+                        <section>
+                                {
+                                        Array.from(groups.entries()).map(([name, groupPosts]) => {
+                                                const first = groupPosts[0];
+                                                return (
+                                                        <>
+                                                                <h2>
+                                                                        {prettyName(name)} ({groupPosts.length} artículo{groupPosts.length > 1 ? 's' : ''})
+                                                                </h2>
+                                                                <ul>
+                                                                        <li>
+                                                                                <a href={`/blog/${first.id}/`}>
+                                                                                        {first.data.heroImage && (
+                                                                                                <Image width={720} height={360} src={first.data.heroImage} alt="" />
+                                                                                        )}
+                                                                                        <h4 class="title">{first.data.title}</h4>
+                                                                                        <p class="date">
+                                                                                                <FormattedDate date={first.data.pubDate} />
+                                                                                        </p>
+                                                                                </a>
+                                                                        </li>
+                                                                </ul>
+                                                        </>
+                                                );
+                                        })
+                                }
+                        </section>
 		</main>
 		<Footer />
 	</body>
