@@ -1,0 +1,93 @@
+---
+import MarkdownIt from "markdown-it";
+import { full as MarkdownItEmoji } from "markdown-it-emoji";
+import MarkdownItTaskLists from "markdown-it-task-lists";
+
+import Layout from "@layouts/BaseLayout.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+// emoji molon en el título
+let title = "Roadmap";
+let pubDate = new Date("July 19 2025");
+let description = "Orden de tareas completadas y pendientes de la web";
+
+let bodyMD = `
+#### :question: ¿De que trata esta página?
+Aquí podeis ver la planificación y el progreso y las tareas planteadas para este blog.
+
+De esta forma yo puedo organizarme correctamente y vosotros ver el avance de la web y las funcionalidades que están pensadas.
+
+Las iré realizando con el tiempo y a medida que avance el proyecto.
+
+---
+
+#### :speaking_head: Notas del creador
+
+Primer comunicado migente?
+
+Enviar al server de discord las sugerencias pa' añadirlas aquí sjsjsjsjsj.
+
+---
+
+#### ⏰ Tareas pendientes
+
+- [ ] Pensar más ideas
+- [ ] Agregar buscador de artículos
+- [ ] Arreglar 'Artículos'
+  - [ ] Eliminar artículos por defecto
+  - [ ] Añadir artículos por categiría
+  - [ ] Añadir la categoría del tutorial de lua
+- [ ] Añadir modo oscuro (tiene pinta de que va a tardar bastante en implementarse)
+
+---
+
+#### :white_check_mark: Tareas completadas
+
+- [x] Desplegar el sitio web
+- [x] Crear el blog
+- [x] Iniciar el proyecto del sitio web
+`;
+
+let html = MarkdownIt()
+    .use(MarkdownItEmoji)
+    .use(MarkdownItTaskLists)
+    .render(bodyMD);
+---
+
+<Layout title={title} description={description} pubDate={pubDate}>
+    <article>
+        <div class="prose">
+            <div class="title">
+                <h1>{title}</h1>
+                <div class="date">
+                    <FormattedDate date={pubDate} />
+                </div>
+                <hr />
+            </div>
+            <div class="markdown" set:html={html} />
+        </div>
+    </article>
+</Layout>
+<style>
+    .prose {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: auto;
+        padding: 1em;
+        color: rgb(var(--gray-dark));
+    }
+
+    .title {
+        /* padding: 1em 0; */
+        text-align: center;
+        line-height: 1;
+    }
+
+    .date {
+        color: rgb(var(--gray));
+    }
+</style>
+<style is:global>
+    .markdown h4 {
+        margin-top: 1em;
+    }
+</style>
