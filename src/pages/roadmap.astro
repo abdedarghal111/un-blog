@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/BlogPost.astro";
+import RoadmapHeroImage from "/src/assets/blog-placeholder-about.png";
+---
+
+<Layout
+    title="Roadmap"
+    description="Orden de tareas completadas y pendientes de la web"
+    pubDate={new Date("July 19 2025")}
+    heroImage={RoadmapHeroImage}
+>
+    <p>
+        Una página con el roadmap de la página web, se pueden ver que tareas se han realizado
+        y el orden del resto de tareas.
+    </p>
+    <ul>
+        <li>[x] Iniciar el proyecto del sitio web</li>
+        <li>[x] Crear el blog y la sección de artículos</li>
+        <li>[ ] Añadir nuevas funcionalidades</li>
+        <li>[ ] Mejorar el diseño de la web</li>
+        <li>[ ] Publicar más tutoriales</li>
+    </ul>
+</Layout>
