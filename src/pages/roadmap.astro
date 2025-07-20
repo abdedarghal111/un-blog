@@ -1,61 +1,12 @@
 ---
-import MarkdownIt from "markdown-it";
-import { full as MarkdownItEmoji } from "markdown-it-emoji";
-import MarkdownItTaskLists from "markdown-it-task-lists";
-
 import Layout from "@layouts/BaseLayout.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
+import RoadmapContent from "@content/roadmap.mdx";
 // emoji molon en el título
 let title = "Roadmap";
 let pubDate = new Date("July 19 2025");
 let description = "Lista de tareas a hacer para el desarrollo del blog.";
 
-let bodyMD = `
-#### :question: ¿De que trata esta página?
-Aquí podeis ver la planificación y el progreso y las tareas planteadas para este blog.
-
-De esta forma yo puedo organizarme correctamente y vosotros ver el avance de la web y las funcionalidades que están pensadas.
-
-Las iré realizando con el tiempo y a medida que avance el proyecto.
-
----
-
-#### :speaking_head: Notas del creador
-
-Primer comunicado migente?
-
-Enviar al server de discord las sugerencias pa' añadirlas aquí sjsjsjsjsj.
-
----
-
-#### ⏰ Tareas pendientes
-
-- [ ] Pensar más ideas
-- [ ] Agregar buscador de artículos
-- [ ] Arreglar 'Artículos'
-  - [ ] Eliminar artículos por defecto
-  - [ ] Añadir artículos por categiría
-  - [ ] Añadir la categoría del tutorial de lua
-- [x] Roadmap
-  - [x] Colocar una descripción correcta
-- [x] Servidor web
-  - [x] Mini script para desplegar actualizaciones
-  - [x] Desplegar el sitio web
-- [ ] Añadir modo oscuro (tiene pinta de que va a tardar bastante en implementarse)
-
----
-
-#### :white_check_mark: Tareas completadas
-
-- [x] Desplegar el sitio web
-- [x] Crear el blog
-- [x] Iniciar el proyecto del sitio web
-`;
-
-let html = MarkdownIt()
-    .use(MarkdownItEmoji)
-    .use(MarkdownItTaskLists)
-    .render(bodyMD);
 ---
 
 <Layout title={title} description={description} pubDate={pubDate}>
@@ -68,7 +19,9 @@ let html = MarkdownIt()
                 </div>
                 <hr />
             </div>
-            <div class="markdown" set:html={html} />
+            <div class="markdown">
+                <RoadmapContent />
+            </div>
         </div>
     </article>
 </Layout>
